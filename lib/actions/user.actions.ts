@@ -10,6 +10,7 @@ import { revalidatePath } from "next/cache"
 
 export const createUser = async(user:CreateUserParams) => {
     try {
+        console.log('se envio la solicitud')
         await connectToDatabase();
 
         const newUser = await User.create(user);
