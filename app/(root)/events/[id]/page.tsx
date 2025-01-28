@@ -7,13 +7,14 @@ import Image from "next/image";
 
 const EventDetails = async({params, searchParams }: SearchParamProps) => {
   const {id} = await params;
+  const resolvedSearchParams = await searchParams;
   const event = await getEventById(id);  
 
 
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
     eventId: event._id,
-    page: searchParams.page as string,
+    page: resolvedSearchParams.page as string,
   })
   
   return (
